@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/luisrdz5/PruebasProyectoPlatziMaster#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "jsdocs": "^1.0.0"
   }
 }
