@@ -1,0 +1,25 @@
+{
+  "name": "tuestilo-pruebas",
+  "version": "1.0.0",
+  "description": "A robust, performance-focused and full featured e-commerce # How to add changes to the repository",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "jsdoc index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luisrdz5/PruebasProyectoPlatziMaster.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luisrdz5/PruebasProyectoPlatziMaster/issues"
+  },
+  "homepage": "https://github.com/luisrdz5/PruebasProyectoPlatziMaster#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsdocs": "^1.0.0"
+  }
+}
