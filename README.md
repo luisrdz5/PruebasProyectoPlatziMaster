@@ -14,4 +14,14 @@ The steps to add a feature in the code are:
 - Make a pull request to the project 
 - Wait to someone of the team aprove your changes
   
+How to update our local repository from the remote (https://github.com/luisrdz5/PruebasProyectoPlatziMaster)
+
+the first time we need to create a reference to the remote repository 
+
+
+- execute #git remote add upstream https://github.com/luisrdz5/PruebasProyectoPlatziMaster
+- get the information from the upstream #git fetch upstream
+- move to the master branch #git checkout master
+- rewrite our master branch with #git rebase upstream/master
+- update your remote repository https://github.com/[your name]/PruebasProyectoPlatziMaster  # git push -f origin master
 
