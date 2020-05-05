@@ -9,8 +9,6 @@ services:
       MYSQL_PASSWORD: user
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: default_schema
-    volumes:
-      - ./mysql:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -25,4 +23,4 @@ services:
     depends_on:
       - mysql
     ports:
-      - 8183:80
+      - 80:80

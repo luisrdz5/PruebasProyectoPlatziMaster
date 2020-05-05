@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql:3306
--- Generation Time: May 04, 2020 at 05:44 AM
+-- Generation Time: May 05, 2020 at 07:47 AM
 -- Server version: 8.0.20
 -- PHP Version: 7.4.5
 
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `Albums` (
-  `id_albums` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `description` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `id_albums` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `description` varchar(250) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `created_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -40,7 +40,7 @@ CREATE TABLE `Albums` (
 --
 
 CREATE TABLE `Categories` (
-  `id_categories` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `id_categories` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `description` int NOT NULL,
   `creation_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -52,23 +52,12 @@ CREATE TABLE `Categories` (
 --
 
 CREATE TABLE `Cities_catalog` (
-  `id_cities_catalog` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `city` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
-  `id_states_catalog` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_postal_codes` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `id_cities_catalog` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `city` varchar(250) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_states_catalog` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_postal_codes` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `available` tinyint(1) NOT NULL,
   `creation_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Countries`
---
-
-CREATE TABLE `Countries` (
-  `id_countries` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_countries_catalog` varchar(30) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -78,11 +67,11 @@ CREATE TABLE `Countries` (
 --
 
 CREATE TABLE `Countries_catalog` (
-  `id_countries_catalog` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `country` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
-  `country_code` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
+  `id_countries_catalog` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `country` varchar(250) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `country_code` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `available` tinyint(1) NOT NULL,
-  `id_currencies` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `id_currencies` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `creation_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -93,9 +82,9 @@ CREATE TABLE `Countries_catalog` (
 --
 
 CREATE TABLE `Currencies` (
-  `id_currencies` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `currency` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
-  `currency_code` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
+  `id_currencies` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `currency` varchar(250) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `currency_code` varchar(5) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `creation_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -106,16 +95,16 @@ CREATE TABLE `Currencies` (
 --
 
 CREATE TABLE `Directions` (
-  `id_directions` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_cities_catalog` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_countries_catalog` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_states_catalog` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `street` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
-  `street_number` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
-  `id_postal_codes` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `id_directions` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_cities_catalog` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_countries_catalog` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_states_catalog` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `street` varchar(250) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `street_number` varchar(250) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_postal_codes` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `available` tinyint(1) NOT NULL,
-  `creation_date` text COLLATE utf8_spanish_ci NOT NULL,
-  `id_users` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+  `creation_date` text CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_users` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -125,9 +114,9 @@ CREATE TABLE `Directions` (
 --
 
 CREATE TABLE `Modules` (
-  `id_modules` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `description` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
-  `module_code` varchar(5) COLLATE utf8_spanish_ci NOT NULL,
+  `id_modules` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `description` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `module_code` varchar(5) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `creation_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -138,10 +127,10 @@ CREATE TABLE `Modules` (
 --
 
 CREATE TABLE `Module_access` (
-  `id_module_access` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_modules` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_security_levels` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_users` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+  `id_module_access` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_modules` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_security_levels` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_users` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -151,8 +140,9 @@ CREATE TABLE `Module_access` (
 --
 
 CREATE TABLE `Payments` (
-  `id_payments` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `description` varchar(250) COLLATE utf8_spanish_ci NOT NULL
+  `id_payments` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `description` varchar(250) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_users` varchar(30) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -162,24 +152,8 @@ CREATE TABLE `Payments` (
 --
 
 CREATE TABLE `Payments_history` (
-  `id_payments_history` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_payments` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_paypal_accounts` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_stripe_accounts` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `creation_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Paypal_accounts`
---
-
-CREATE TABLE `Paypal_accounts` (
-  `id_paypal_accounts` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_users` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_payments` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `account_paypal` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `id_payments_history` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_payments` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `creation_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -190,10 +164,10 @@ CREATE TABLE `Paypal_accounts` (
 --
 
 CREATE TABLE `Postal_codes` (
-  `id_postal_codes` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `postal_code` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
-  `id_states_catalog` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_cities_catalog` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `id_postal_codes` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `postal_code` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_states_catalog` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_cities_catalog` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `available` tinyint(1) NOT NULL,
   `creation_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -205,15 +179,15 @@ CREATE TABLE `Postal_codes` (
 --
 
 CREATE TABLE `Products` (
-  `id_products` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `description` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `id_products` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `description` varchar(200) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `cost` bigint NOT NULL,
   `quantity` int NOT NULL,
   `creation_date` date NOT NULL,
-  `id_seller` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `id_seller` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `available` tinyint(1) NOT NULL,
-  `id_countries` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_albums` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `id_countries` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_albums` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `score` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -224,11 +198,12 @@ CREATE TABLE `Products` (
 --
 
 CREATE TABLE `Product_photos` (
-  `id_product_photos` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `description` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
-  `photo` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
-  `id_albums` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `created_date` date NOT NULL
+  `id_product_photos` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `description` varchar(250) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `photo` varchar(500) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_albums` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `created_date` date NOT NULL,
+  `visible` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -238,23 +213,9 @@ CREATE TABLE `Product_photos` (
 --
 
 CREATE TABLE `Security_levels` (
-  `id_security_levels` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `description` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
-  `secirity_code` varchar(5) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Sellers`
---
-
-CREATE TABLE `Sellers` (
-  `id_sellers` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_countries` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_users` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `creation_date` date NOT NULL,
-  `score` int NOT NULL
+  `id_security_levels` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `description` varchar(250) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `secirity_code` varchar(5) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -264,9 +225,10 @@ CREATE TABLE `Sellers` (
 --
 
 CREATE TABLE `Shopping_carts` (
-  `id_shopping_carts` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_users` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `creation_date` date NOT NULL
+  `id_shopping_carts` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `creation_date` date NOT NULL,
+  `puchase_date` date NOT NULL,
+  `id_payments_history` varchar(30) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -276,19 +238,17 @@ CREATE TABLE `Shopping_carts` (
 --
 
 CREATE TABLE `Shopping_cart_products` (
-  `id_shopping_cart_products` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_products` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `id_shopping_cart_products` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_products` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `quantity` int NOT NULL,
   `legacy_cost` bigint NOT NULL,
-  `email` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
-  `purchase_date` date NOT NULL,
-  `id_albums` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_countries` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_currencies` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_securty_levels` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_sellers` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `id_albums` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_countries` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_currencies` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_shopping_carts` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `creation_date` date NOT NULL,
-  `id_payments_history` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+  `id_payments_history` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_user_seller` varchar(30) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -298,38 +258,11 @@ CREATE TABLE `Shopping_cart_products` (
 --
 
 CREATE TABLE `States_catalog` (
-  `id_states_catalog` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `state` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
-  `state_code` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
-  `id_countries_catalog` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `id_states_catalog` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `state` varchar(250) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `state_code` varchar(10) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_countries_catalog` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `available` tinyint(1) NOT NULL,
-  `creation_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Stripe_accounts`
---
-
-CREATE TABLE `Stripe_accounts` (
-  `id_stripe_accounts` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_payments` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_users` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `account_stripe` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
-  `creation_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Subcategories`
---
-
-CREATE TABLE `Subcategories` (
-  `id_subcategories` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `description` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
-  `id_categories` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `creation_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -340,19 +273,34 @@ CREATE TABLE `Subcategories` (
 --
 
 CREATE TABLE `Users` (
-  `id_users` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `login` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `password` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `first_name` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `last_name` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `email` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
-  `photo` varchar(500) COLLATE utf8_spanish_ci NOT NULL,
-  `id_countries` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_security_levels` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_sellers` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `id_shopping_carts` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
-  `creation_date` date DEFAULT NULL
+  `id_users` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `login` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `password` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `first_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `last_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(250) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `photo` varchar(500) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_security_levels` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `id_shopping_carts` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `creation_date` date DEFAULT NULL,
+  `id_user_types` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `score` int NOT NULL,
+  `available` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `User_types`
+--
+
+CREATE TABLE `User_types` (
+  `id_user_types` varchar(30) NOT NULL,
+  `user_type` varchar(250) NOT NULL,
+  `user_type_code` int NOT NULL,
+  `available` tinyint(1) NOT NULL,
+  `creation_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Indexes for dumped tables
@@ -375,12 +323,6 @@ ALTER TABLE `Categories`
 --
 ALTER TABLE `Cities_catalog`
   ADD PRIMARY KEY (`id_cities_catalog`);
-
---
--- Indexes for table `Countries`
---
-ALTER TABLE `Countries`
-  ADD PRIMARY KEY (`id_countries`);
 
 --
 -- Indexes for table `Countries_catalog`
@@ -425,12 +367,6 @@ ALTER TABLE `Payments_history`
   ADD PRIMARY KEY (`id_payments_history`);
 
 --
--- Indexes for table `Paypal_accounts`
---
-ALTER TABLE `Paypal_accounts`
-  ADD PRIMARY KEY (`id_paypal_accounts`);
-
---
 -- Indexes for table `Postal_codes`
 --
 ALTER TABLE `Postal_codes`
@@ -455,12 +391,6 @@ ALTER TABLE `Security_levels`
   ADD PRIMARY KEY (`id_security_levels`);
 
 --
--- Indexes for table `Sellers`
---
-ALTER TABLE `Sellers`
-  ADD PRIMARY KEY (`id_sellers`);
-
---
 -- Indexes for table `Shopping_carts`
 --
 ALTER TABLE `Shopping_carts`
@@ -479,22 +409,16 @@ ALTER TABLE `States_catalog`
   ADD PRIMARY KEY (`id_states_catalog`);
 
 --
--- Indexes for table `Stripe_accounts`
---
-ALTER TABLE `Stripe_accounts`
-  ADD PRIMARY KEY (`id_stripe_accounts`);
-
---
--- Indexes for table `Subcategories`
---
-ALTER TABLE `Subcategories`
-  ADD PRIMARY KEY (`id_subcategories`);
-
---
 -- Indexes for table `Users`
 --
 ALTER TABLE `Users`
   ADD PRIMARY KEY (`id_users`);
+
+--
+-- Indexes for table `User_types`
+--
+ALTER TABLE `User_types`
+  ADD PRIMARY KEY (`id_user_types`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
