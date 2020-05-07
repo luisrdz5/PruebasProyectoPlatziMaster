@@ -1,7 +1,6 @@
 const { nanoid } = require('nanoid');
-const bcrypt = require('bcryptjs');
 
-const TABLA = 'user';
+const TABLA = 'products';
 
 module.exports = function(injectedStore){
     let store = injectedStore;
@@ -10,23 +9,23 @@ module.exports = function(injectedStore){
     }
 
     async function upsert(body) {
-        const user = {
-            first_name: body.first_name,
-            last_name: body.last_name,
-            username: body.username,
+        const product = {
+            description: body.description,
             photo: body.photo,
+            cost: body.cost,
+            qty: body.qty,
+            available: body.available,
             score: body.score || '',
-            password: await bcrypt.hash(body.password,5),
             creation_date: new Date(),
         }
 
         if (body.id) {
-            user.id = body.id;
+            product.id = body.id;
         } else {
-            user.id = nanoid();
+            product.id = nanoid();
         }
 
-        return await store.insert(TABLA, user);
+        return await store.insert(TABLA, product);
     }
 
     async function list(){
