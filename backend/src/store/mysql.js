@@ -65,7 +65,23 @@ function list(table){
     })
 }
 
+//function get(table, id){
+function get(query){
+    return new Promise( (resolve, reject) => {
+        //connection.query(`SELECT * FROM ${table} WHERE id='${id}'`, (err, data) => {
+        connection.query(query, (err, data) => {
+            if (err){
+                return reject(err);
+            }
+
+            resolve(data);
+
+        })
+    })
+}
+
 module.exports = {
     insert,
     list,
+    get,
 }

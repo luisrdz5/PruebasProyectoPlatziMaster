@@ -15,14 +15,14 @@ module.exports = function(injectedStore){
             cost: body.cost,
             qty: body.qty,
             available: body.available,
-            score: body.score || '',
+            score: body.score || '0',
             creation_date: new Date(),
         }
 
         if (body.id) {
-            product.id = body.id;
+            product.ProductID = body.id;
         } else {
-            product.id = nanoid();
+            product.ProductID = nanoid();
         }
 
         return await store.insert(TABLA, product);
@@ -32,9 +32,16 @@ module.exports = function(injectedStore){
         return await store.list(TABLA);
     }
 
+    async function get(id){
+        const query = `SELECT * FROM ${TABLA} WHERE ProductID='${id}'`;
+        //return await store.get(TABLA, id);
+        return await store.get(query);
+    }
+
     return {
         upsert,
         list,
+        get,
     }
 
 }

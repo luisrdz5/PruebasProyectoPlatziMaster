@@ -6,6 +6,7 @@ const Controller = require('./index')
 //Routs
 router.post('/', insert);
 router.get('/', list);
+router.get('/:id', get);
 
 function insert(req, res, next){
     Controller.upsert(req.body)
@@ -19,12 +20,23 @@ function insert(req, res, next){
 
 function list(req, res, next){
     Controller.list()
-        .then((userList) => {
-            response.success(req, res, userList, 200);
+        .then((productsList) => {
+            response.success(req, res, productsList, 200);
         })
         .catch( (err) => {
             response.error(req, res, err.message, 500, 'error network user');
         });
 }
+
+function get(req, res, next){
+    Controller.get(req.params.id)
+        .then((product) => {
+            response.success(req, res, product, 200);
+        })
+        .catch( (err) => {
+            response.error(req, res, err.message, 500, 'error network user');
+        });
+}
+
 
 module.exports = router;
