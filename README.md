@@ -4,15 +4,17 @@ A robust, performance-focused and full featured e-commerce
 # get started
 
 ### Clone repository
-> git clone https://github.com/wilantury/PruebasProyectoPlatziMaster.git
+
+```git clone https://github.com/wilantury/PruebasProyectoPlatziMaster.git```
 ### Install dependencies
-> cd PruebasProyectoPlatziMaster
-> npm install
+```cd PruebasProyectoPlatziMaster```
+
+``` npm install ```
 ### Start server
-> nodemon backend/src/server.js
-- API server will be running at http://localhost:3000
+```nodemon backend/src/server.js```
+> API server will be running at http://localhost:3000
 # API documentation
-### Get API documentation
+### Open API documentation
 > Go to:  [http://localhost:3000/api-docs/](http://localhost:3000/api-docs/)
 
 # How to add changes to the repository
