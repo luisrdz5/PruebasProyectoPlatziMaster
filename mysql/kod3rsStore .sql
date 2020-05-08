@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql:3306
--- Generation Time: May 05, 2020 at 07:47 AM
+-- Generation Time: May 08, 2020 at 12:46 AM
 -- Server version: 8.0.20
 -- PHP Version: 7.4.5
 
@@ -214,8 +214,10 @@ CREATE TABLE `Product_photos` (
 
 CREATE TABLE `Security_levels` (
   `id_security_levels` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `description` varchar(250) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
-  `secirity_code` varchar(5) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL
+  `security_code` varchar(5) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `security_level_description` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
+  `available` tinyint(1) NOT NULL,
+  `creation_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -228,7 +230,9 @@ CREATE TABLE `Shopping_carts` (
   `id_shopping_carts` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `creation_date` date NOT NULL,
   `puchase_date` date NOT NULL,
-  `id_payments_history` varchar(30) COLLATE utf8_spanish_ci NOT NULL
+  `id_payments_history` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `id_users` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `historic_order` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
