@@ -5,14 +5,14 @@ const dbconf_pro = {
     host: config.mysql.host,
     user: config.mysql.user,
     password: config.mysql.password,
-    database: config.mysql.name,
+    database: config.mysql.database,
 };
 
 const dbconf_dev = {
     host: config.mysql_dev.host,
     user: config.mysql_dev.user,
     password: config.mysql_dev.password,
-    database: config.mysql_dev.name,
+    database: config.mysql_dev.database,
 };
 
 const env_dev = config.production;

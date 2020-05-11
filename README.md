@@ -5,7 +5,7 @@ A robust, performance-focused and full featured e-commerce
 
 ### Clone repository
 
-```git clone https://github.com/wilantury/PruebasProyectoPlatziMaster.git```
+```git clone https://github.com/luisrdz5/PruebasProyectoPlatziMaster.git```
 ### Install dependencies
 ```cd PruebasProyectoPlatziMaster```
 
