@@ -1,7 +1,7 @@
 const { nanoid } = require('nanoid');
 const bcrypt = require('bcryptjs');
 
-const TABLA = 'user';
+const TABLA = 'users';
 const TABLA_USER_ADDRESS = 'addresess';
 
 module.exports = function(injectedStore){
@@ -9,24 +9,23 @@ module.exports = function(injectedStore){
     if (!store) {
         store = require('../../store/mysql');
     }
-
+    
     async function upsert(body) {
         const user = {
-            first_name: body.first_name,
-            last_name: body.last_name,
-            username: body.username,
-            photo: body.photo,
-            score: body.score || '',
-            password: await bcrypt.hash(body.password,5),
+            id_users: nanoid(),
+            login: '',
+            first_name: '',
+            last_name: '',
+            email: body.email,
+            photo: '',
+            id_security_levels: '',
+            id_shopping_carts:'',
             creation_date: new Date(),
+            id_user_types: '',
+            score: 0,
+            available: 1,
+            password: await bcrypt.hash(body.password,5),
         }
-
-        if (body.id) {
-            user.UserID = body.id;
-        } else {
-            user.UserID = nanoid();
-        }
-
         return await store.insert(TABLA, user);
     }
 
@@ -35,7 +34,7 @@ module.exports = function(injectedStore){
     }
 
     async function get(id){
-        const query = `SELECT * FROM ${TABLA} WHERE UserID='${id}'`;
+        const query = `SELECT * FROM ${TABLA} WHERE id_users='${id}'`;
         //return await store.get(TABLA, id);
         return await store.get(query);
     }
@@ -43,7 +42,7 @@ module.exports = function(injectedStore){
     async function getAddr(id){
         //SELECT * FROM addresess INNER JOIN user ON addresess.UserID = user.UserID
         //SELECT * FROM addresess WHERE UserID='auPaaWgpllgm6OAIjh7-d'
-        const query = `SELECT * FROM ${TABLA_USER_ADDRESS} WHERE UserID='${id}'`;
+        const query = `SELECT * FROM ${TABLA_USER_ADDRESS} WHERE id_users='${id}'`;
         //return await store.get(TABLA, id);
         return await store.get(query);
     }
