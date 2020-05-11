@@ -14,7 +14,7 @@ app.use(express.json());
 
 //ROUTER
 app.use('/api/user', user);
-app.use('/api/user/login', login);
+app.use('/api/login', login);
 app.use('/api/products', products);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
