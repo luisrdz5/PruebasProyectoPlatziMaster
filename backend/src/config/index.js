@@ -13,7 +13,7 @@ const config = {
     user: process.env.DB_USER_DEV || "root",
     password: process.env.DB_PASSWORD_DEV || "",
     host: process.env.DB_HOST_DEV || "localhost",
-    name: process.env.DB_NAME_DEV || "ecommerce-tuestilo",
+    name: process.env.DB_NAME_DEV || "kod3rsstore",
   }
 };
 

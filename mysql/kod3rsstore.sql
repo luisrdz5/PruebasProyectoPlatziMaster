@@ -7,7 +7,6 @@
 -- Server version: 8.0.20
 -- PHP Version: 7.4.5
 
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -19,9 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
---Database: `kod3rsStore`
+-- Database: `kod3rsStore`
 --
 
+DROP DATABASE IF EXISTS kod3rsStore;
+
+CREATE DATABASE kod3rsStore;
+USE kod3rsStore;
 -- --------------------------------------------------------
 
 --
@@ -305,7 +308,7 @@ CREATE TABLE `User_types` (
   `user_type_code` int NOT NULL,
   `available` tinyint(1) NOT NULL,
   `creation_date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Indexes for dumped tables

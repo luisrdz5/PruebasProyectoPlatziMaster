@@ -2,6 +2,7 @@ const express = require('express');
 const config = require('./config/index');
 
 const user = require('./routes/user/network');
+const login = require('./routes/login/network');
 const products = require('./routes/products/network');
 
 const swaggerUi = require('swagger-ui-express');
@@ -13,6 +14,7 @@ app.use(express.json());
 
 //ROUTER
 app.use('/api/user', user);
+app.use('/api/user/login', login);
 app.use('/api/products', products);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
