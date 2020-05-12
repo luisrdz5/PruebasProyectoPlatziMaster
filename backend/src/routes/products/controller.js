@@ -42,11 +42,18 @@ module.exports = function(injectedStore){
         return await store.get(query);
     }
 
+    async function getProductByPrice(min_price, max_price){
+        //select * from products where cost >= 40000 and cost <= 75000
+        const query = `SELECT * FROM ${TABLA} WHERE cost >= ${min_price} and cost <= ${max_price}`;
+        return await store.get(query);
+    }
+
     return {
         upsert,
         list,
         get,
         getProductByName,
+        getProductByPrice,
     }
 
 }
