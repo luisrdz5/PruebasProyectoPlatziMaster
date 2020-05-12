@@ -11,19 +11,17 @@ module.exports = function(injectedStore){
     async function upsert(body) {
         const product = {
             description: body.description,
-            photo: body.photo,
+            product_title: body.title,
             cost: body.cost,
-            qty: body.qty,
-            available: body.available,
-            score: body.score || '0',
+            quantity: body.quantity,
             creation_date: new Date(),
+            id_seller: '123',
+            available: 1,
+            id_countries:'123',
+            id_albums:'123',
+            score: 0,
         }
-
-        if (body.id) {
-            product.ProductID = body.id;
-        } else {
-            product.ProductID = nanoid();
-        }
+        product.id_products = nanoid();
 
         return await store.insert(TABLA, product);
     }
@@ -33,8 +31,14 @@ module.exports = function(injectedStore){
     }
 
     async function get(id){
-        const query = `SELECT * FROM ${TABLA} WHERE ProductID='${id}'`;
+        const query = `SELECT * FROM ${TABLA} WHERE id_products='${id}'`;
         //return await store.get(TABLA, id);
+        return await store.get(query);
+    }
+
+    async function getProductByName(searchWord){
+        //select * from products where product_title like '%marca%' or description like '%cafe%'
+        const query = `SELECT * FROM ${TABLA} WHERE product_title like'%${searchWord}%' or description like '%${searchWord}%'`;
         return await store.get(query);
     }
 
@@ -42,6 +46,7 @@ module.exports = function(injectedStore){
         upsert,
         list,
         get,
+        getProductByName,
     }
 
 }
