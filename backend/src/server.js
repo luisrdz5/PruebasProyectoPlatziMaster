@@ -18,6 +18,14 @@ app.use('/api/login', login);
 app.use('/api/products', products);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
+
+app.use((req, res, next) => {
+    res.status(404).send({
+    status: 404,
+    error: 'Not found'
+    })
+})
+
 app.listen(config.port, function (){
     console.log(`Server is listenning in: http://localhost:${config.port}`);
 })
