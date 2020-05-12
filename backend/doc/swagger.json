@@ -3,7 +3,7 @@
   "info": {
     "description": "This is an API that serve services to an Online store, It is able to manage users, shopping carts, products loader, etc.",
     "version": "0.1.0",
-    "title": "Online store",
+    "title": "Online store"
   },
   "host": "kod3rsstore.com",
   "basePath": "/api",

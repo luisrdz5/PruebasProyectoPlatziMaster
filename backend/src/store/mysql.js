@@ -1,28 +1,12 @@
 const mysql = require('mysql');
 const config = require('../config/index');
 
-const dbconf_pro = {
+const dbconf = {
     host: config.mysql.host,
     user: config.mysql.user,
     password: config.mysql.password,
     database: config.mysql.database,
 };
-
-const dbconf_dev = {
-    host: config.mysql_dev.host,
-    user: config.mysql_dev.user,
-    password: config.mysql_dev.password,
-    database: config.mysql_dev.database,
-};
-
-const env_dev = config.production;
-
-let dbconf;
-if(env_dev === true){
-    dbconf = dbconf_pro;
-}else{
-    dbconf = dbconf_dev;
-}
 
 let connection;
 
