@@ -1,6 +1,13 @@
+/** 
+ *Module for create/read/update/delete information of a data base MySQL. 
+ *@module mysql
+*/
 const mysql = require('mysql');
 const config = require('../config/index');
 
+/**
+ * Fetch the environment variables to connect to a data base MySQL.
+ */
 const dbconf = {
     host: config.mysql.host,
     user: config.mysql.user,
@@ -9,10 +16,11 @@ const dbconf = {
 };
 
 let connection;
-
+/**
+ * Handle the connection to a database MySQL.
+ */
 function handleCon(){
     connection = mysql.createConnection(dbconf);
-
     connection.connect( (err) => {
         if(err){
             console.error('[db err]', err);
@@ -24,7 +32,12 @@ function handleCon(){
 }
 
 handleCon();
-
+/**
+ * Insert data into the target table
+ * @param {string} table - The target table 
+ * @param {object} data - Data to insert into table
+ * @returns {promise} result of data insertion
+ */
 function insert(table, data){
     return new Promise( (resolve, reject) => {
         connection.query(`INSERT INTO ${table} SET ?`, data, (err, result) => {
@@ -35,30 +48,34 @@ function insert(table, data){
         })
     })
 }
-
+/**
+ * List all tuples from the target table
+ * @param {String} table - The target table 
+ * @returns {Promise<object[]>} - array with query results.
+ */
 function list(table){
     return new Promise( (resolve, reject) => {
         connection.query(`SELECT * FROM ${table}`, (err, data) => {
             if (err){
                 return reject(err);
             }
-
             resolve(data);
-
         })
     })
 }
 
-//function get(table, id){
+/**
+ * Fetch tuples with a customized query from the target table.
+ * @param {string} query - The customized query 
+ * @returns {Promise} - array with query results.
+ */
 function get(query){
     return new Promise( (resolve, reject) => {
         connection.query(query, (err, data) => {
             if (err){
                 return reject(err);
             }
-
             resolve(data || null);
-
         })
     })
 }
