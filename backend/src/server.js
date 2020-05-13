@@ -27,5 +27,7 @@ app.use((req, res, next) => {
 })
 
 app.listen(config.port, function (){
-    console.log(`Server is listenning in: http://localhost:${config.port}`);
+    console.log(`Server is listening in: http://localhost:${config.port}`);
 })
+
+module.exports = app;
