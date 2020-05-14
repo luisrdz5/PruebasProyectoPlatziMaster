@@ -49,6 +49,21 @@ function insert(table, data){
     })
 }
 /**
+ * Update tuples with a customized query in the target table and id target.
+ * @param {string} query - The customized query to UPDATE data
+ * @returns {Promise} - result of the update operation.
+ */
+function update(query, data){
+    return new Promise( (resolve, reject) => {
+        connection.query(query,data, (err, result) => {
+            if(err){
+                return reject(err);
+            }
+            resolve(result);
+        })
+    })
+}
+/**
  * List all tuples from the target table
  * @param {String} table - The target table 
  * @returns {Promise<object[]>} - array with query results.
@@ -82,6 +97,7 @@ function get(query){
 
 module.exports = {
     insert,
+    update,
     list,
     get,
 }
