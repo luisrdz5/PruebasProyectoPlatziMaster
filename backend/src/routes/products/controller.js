@@ -8,7 +8,7 @@ module.exports = function(injectedStore){
         store = require('../../store/mysql');
     }
 
-    async function upsert(body) {
+    async function insert(body) {
         const product = {
             description: body.description,
             product_title: body.title,
@@ -49,7 +49,7 @@ module.exports = function(injectedStore){
     }
 
     return {
-        upsert,
+        insert,
         list,
         get,
         getProductByName,

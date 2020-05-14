@@ -10,7 +10,7 @@ module.exports = function(injectedStore){
         store = require('../../store/mysql');
     }
     
-    async function upsert(body) {
+    async function insert(body) {
         const user = {
             id_users: nanoid(),
             login: '',
@@ -48,7 +48,7 @@ module.exports = function(injectedStore){
     }
 
     return {
-        upsert,
+        insert,
         list,
         get,
         getAddr,
