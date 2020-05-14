@@ -1,6 +1,8 @@
 const { nanoid } = require('nanoid');
 
 const TABLA = 'products';
+const TABLA_ALBUMS = 'albums';
+const TABLA_PHOTOS = 'product_photos';
 
 module.exports = function(injectedStore){
     let store = injectedStore;
@@ -9,6 +11,7 @@ module.exports = function(injectedStore){
     }
 
     async function insert(body) {
+        
         const product = {
             description: body.description,
             product_title: body.title,
@@ -18,12 +21,36 @@ module.exports = function(injectedStore){
             id_seller: '123',
             available: 1,
             id_countries:'123',
-            id_albums:'123',
+            id_albums:'222',
+            id_categories:body.id_categories,
             score: 0,
         }
         product.id_products = nanoid();
 
+        const album = {
+            id_albums: nanoid(), 
+            id_products: product.id_products,
+            description: body.title,
+            created_date: new Date()
+        }
+        const albumCreated = await store.insert(TABLA_ALBUMS, album);
+        console.log(albumCreated);
+
+        if(body.photo){
+            const photo = {
+                id_product_photos: nanoid(),
+                description: body.photo.description,
+                url_photo: body.photo.url,
+                id_albums: album.id_albums,
+                created_date: new Date(),
+                visible: true,
+            }
+            const photoCreated = await store.insert(TABLA_PHOTOS, photo);
+            console.log(photoCreated);
+        }
+
         return await store.insert(TABLA, product);
+
     }
 
     async function list(){
@@ -55,5 +82,4 @@ module.exports = function(injectedStore){
         getProductByName,
         getProductByPrice,
     }
-
 }

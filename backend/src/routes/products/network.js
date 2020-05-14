@@ -11,7 +11,7 @@ router.get('/search/price', searchByPrice);
 router.get('/:id', get);
 
 function insert(req, res, next){
-    Controller.upsert(req.body)
+    Controller.insert(req.body)
         .then((user) => {
             response.success(req, res, user, 200);
         })
