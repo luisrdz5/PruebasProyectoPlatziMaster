@@ -36,7 +36,6 @@ module.exports = function(injectedStore){
 
     async function get(id){
         const query = `SELECT * FROM ${TABLA} WHERE id_categories='${id}'`;
-        //return await store.get(TABLA, id);
         return await store.get(query);
     }
 
