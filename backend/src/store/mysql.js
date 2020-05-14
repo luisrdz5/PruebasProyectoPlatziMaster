@@ -57,7 +57,7 @@ function get(query){
                 return reject(err);
             }
 
-            resolve(data[0] || null);
+            resolve(data || null);
 
         })
     })

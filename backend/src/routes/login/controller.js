@@ -12,7 +12,7 @@ module.exports = function(injectedStore){
         //select u.password from users as u where u.email='lilia@name.com'
         const query = `SELECT u.password FROM ${TABLA} as u WHERE u.email='${email}'`;
         const data = await store.get(query);
-        return bcrypt.compare(password, data.password)
+        return bcrypt.compare(password, data[0].password)
             .then( areEqual => {
                 if(areEqual === true){
                     //generar token
