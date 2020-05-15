@@ -4,6 +4,8 @@ services:
   mysql:
     image: mysql:latest
     container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
     environment:
       MYSQL_USER: user
       MYSQL_PASSWORD: user
@@ -11,7 +13,6 @@ services:
       MYSQL_DATABASE: default_schema
     ports:
       - 3306:3306
-
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: pma
@@ -19,7 +20,7 @@ services:
       - mysql
     environment:
       PMA_HOST: mysql
-      PMA_PORT: 3306
+      PMA_PORT: 25060
       PMA_ARBITRARY: 1
     restart: always
     depends_on:
