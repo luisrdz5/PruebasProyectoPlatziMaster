@@ -13,8 +13,9 @@ const dbconf = {
     user: config.mysql.user,
     password: config.mysql.password,
     database: config.mysql.database,
+    port: config.mysql.dbPort,
+    flags: 'SSL'
 };
-
 let connection;
 /**
  * Handle the connection to a database MySQL.
