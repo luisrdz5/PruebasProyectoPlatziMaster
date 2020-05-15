@@ -11,6 +11,15 @@ module.exports = function(injectedStore){
     }
 
     async function insert(body) {
+
+        const album = {
+            id_albums: nanoid(), 
+            id_products: product.id_products,
+            description: body.title,
+            created_date: new Date()
+        }
+        const albumCreated = await store.insert(TABLA_ALBUMS, album);
+        console.log(albumCreated);
         
         const product = {
             description: body.description,
@@ -21,20 +30,11 @@ module.exports = function(injectedStore){
             id_seller: '123',
             available: 1,
             id_countries:'123',
-            id_albums:'222',
+            id_albums:album.id_albums,
             id_categories:body.id_categories,
             score: 0,
         }
         product.id_products = nanoid();
-
-        const album = {
-            id_albums: nanoid(), 
-            id_products: product.id_products,
-            description: body.title,
-            created_date: new Date()
-        }
-        const albumCreated = await store.insert(TABLA_ALBUMS, album);
-        console.log(albumCreated);
 
         if(body.photo){
             const photo = {
@@ -51,6 +51,34 @@ module.exports = function(injectedStore){
 
         return await store.insert(TABLA, product);
 
+    }
+
+    async function update(body) {
+        
+        const product = {
+            description: body.description,
+            product_title: body.title,
+            cost: body.cost,
+            quantity: body.quantity,
+            id_seller: '123',
+            available: body.available,
+            id_countries:'123',
+            id_categories:body.id_categories,
+        }
+
+        if(body.photo){
+            const photo = {
+                description: body.photo.description,
+                url_photo: body.photo.url,
+                visible: body.photo.visible,
+            }
+            const queryUpdatePhoto = `UPDATE ${TABLA_PHOTOS} SET ? WHERE id_albums=(SELECT id_albums FROM ${TABLA_ALBUMS} WHERE albums.id_products='${body.id_products}')`;
+            const resultUpdatePhoto = store.update(queryUpdatePhoto, photo);
+            console.log(resultUpdatePhoto);
+        }
+
+        const queryUpdateProductInfo = `UPDATE ${TABLA} SET ? WHERE id_products='${body.id_products}'`;
+        return await store.update(queryUpdateProductInfo, product);
     }
 
     async function list(){
@@ -75,11 +103,20 @@ module.exports = function(injectedStore){
         return await store.get(query);
     }
 
+    async function getProductsByCategory(cat_id){
+        //SELECT * FROM `products` WHERE id_categories='idUhZCmV_LpUxHV6Uqz39'
+        const query = `SELECT * FROM ${TABLA} WHERE id_categories='${cat_id}'`;
+        return await store.get(query);
+    }
+    
+
     return {
         insert,
+        update,
         list,
         get,
         getProductByName,
         getProductByPrice,
+        getProductsByCategory,
     }
 }
