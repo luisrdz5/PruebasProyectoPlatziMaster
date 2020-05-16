@@ -9,14 +9,13 @@ router.get('/', list);
 router.get('/:id', get);
 router.get('/addr/:id', getAddr);
 
-function insert(req, res, next){
-    Controller.upsert(req.body)
-        .then((user) => {
-            response.success(req, res, user, 200);
-        })
-        .catch( (err) => {
-            response.error(req, res, err.message, 500, 'error network user');
-        });
+async function insert(req, res, next){
+      try {
+          const userRes = await Controller.insert(req.body);
+          response.success(req, res, userRes, 200);
+      } catch( err){
+          response.error(req, res, err.message, 500, 'error network user');
+      }
 }
 
 function list(req, res, next){

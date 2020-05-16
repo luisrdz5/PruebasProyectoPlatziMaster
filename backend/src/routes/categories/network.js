@@ -10,13 +10,12 @@ router.get('/', list);
 router.get('/:id', get);
 
 function insert(req, res, next){
-    Controller.insert(req.body)
-        .then((category) => {
-            response.success(req, res, category, 200);
-        })
-        .catch( (err) => {
-            response.error(req, res, err.message, 500, 'error network Categories');
-        });
+    try{
+        const resInsert = Controller.insert(req.body);
+        response.success(req, res, resInsert, 200);
+    }catch(err){
+        response.error(req, res, err.message, 500, 'error network Categories');
+    }
 }
 
 function update(req, res, next){

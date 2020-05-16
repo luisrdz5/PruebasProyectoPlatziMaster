@@ -12,15 +12,6 @@ module.exports = function(injectedStore){
 
     async function insert(body) {
 
-        const album = {
-            id_albums: nanoid(), 
-            id_products: product.id_products,
-            description: body.title,
-            created_date: new Date()
-        }
-        const albumCreated = await store.insert(TABLA_ALBUMS, album);
-        console.log(albumCreated);
-        
         const product = {
             description: body.description,
             product_title: body.title,
@@ -30,11 +21,24 @@ module.exports = function(injectedStore){
             id_seller: '123',
             available: 1,
             id_countries:'123',
-            id_albums:album.id_albums,
+            id_albums:'222',
             id_categories:body.id_categories,
             score: 0,
         }
         product.id_products = nanoid();
+
+        const album = {
+            id_albums: nanoid(), 
+            id_products: product.id_products,
+            description: body.title,
+            created_date: new Date()
+        }
+        try{
+            await store.insert(TABLA_ALBUMS, album);
+        }catch(err){
+            throw err;
+        }
+        
 
         if(body.photo){
             const photo = {
@@ -45,12 +49,17 @@ module.exports = function(injectedStore){
                 created_date: new Date(),
                 visible: true,
             }
-            const photoCreated = await store.insert(TABLA_PHOTOS, photo);
-            console.log(photoCreated);
+            try{
+                await store.insert(TABLA_PHOTOS, photo);
+            }catch(err){
+                throw err;
+            }
         }
-
-        return await store.insert(TABLA, product);
-
+        try{
+            return await store.insert(TABLA, product);
+        }catch(err){
+            throw err;
+        }
     }
 
     async function update(body) {

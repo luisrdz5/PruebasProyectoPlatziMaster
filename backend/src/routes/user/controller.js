@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const TABLA = 'users';
 const TABLA_USER_ADDRESS = 'addresess';
 
-module.exports = function(injectedStore){
+function controller(injectedStore){
     let store = injectedStore;
     if (!store) {
         store = require('../../store/mysql');
@@ -26,7 +26,11 @@ module.exports = function(injectedStore){
             available: 1,
             password: await bcrypt.hash(body.password,5),
         }
-        return await store.insert(TABLA, user);
+        try{
+            return await store.insert(TABLA, user);
+        }catch(err){
+            throw err;
+        }
     }
 
     async function list(){
@@ -53,5 +57,6 @@ module.exports = function(injectedStore){
         get,
         getAddr,
     }
-
 }
+
+module.exports = controller;

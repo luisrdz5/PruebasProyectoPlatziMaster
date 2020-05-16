@@ -16,8 +16,11 @@ module.exports = function(injectedStore){
             creation_date: new Date(),     
         }
         category.id_categories = nanoid();
-
-        return await store.insert(TABLA, category);
+        try{
+            return await store.insert(TABLA, category);
+        }catch(err){
+            throw err;
+        }
     }
 
     async function update(body) {

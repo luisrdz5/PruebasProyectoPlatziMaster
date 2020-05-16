@@ -12,14 +12,13 @@ router.get('/search/price', searchByPrice);
 router.get('/search/category/:id', searchByCategory);
 router.get('/:id', get);
 
-function insert(req, res, next){
-    Controller.insert(req.body)
-        .then((user) => {
-            response.success(req, res, user, 200);
-        })
-        .catch( (err) => {
-            response.error(req, res, err.message, 500, 'error network Products');
-        });
+async function insert(req, res, next){
+    try{
+        const resInsert = await Controller.insert(req.body);
+        response.success(req, res, resInsert, 200);
+    }catch(err){
+        response.error(req, res, err.message, 500, 'error network Products');
+    }
 }
 
 function update(req, res, next){
