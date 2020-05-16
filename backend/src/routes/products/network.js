@@ -9,7 +9,7 @@ router.put('/', update);
 router.get('/', list);
 router.get('/search/name', searchByName);
 router.get('/search/price', searchByPrice);
-router.get('/search/category/:id', searchByCategory);
+router.get('/search/category', searchByCategory);
 router.get('/:id', get);
 
 async function insert(req, res, next){
@@ -21,63 +21,56 @@ async function insert(req, res, next){
     }
 }
 
-function update(req, res, next){
-    Controller.update(req.body)
-        .then((res_update) => {
-            response.success(req, res, res_update, 200);
-        })
-        .catch( (err) => {
-            response.error(req, res, err.message, 500, 'error network Products');
-        });
+async function update(req, res, next){
+    try{
+        const resUpdate = await Controller.update(req.body);
+        response.success(req, res, resUpdate, 200);
+    }catch(err){
+        response.error(req, res, err.message, 500, 'error network Products');
+    }
 }
 
-function list(req, res, next){
-    Controller.list()
-        .then((productsList) => {
-            response.success(req, res, productsList, 200);
-        })
-        .catch( (err) => {
+async function list(req, res, next){
+        try{
+            const resList = await Controller.list();
+            response.success(req, res, resList, 200);
+        }catch(err){
             response.error(req, res, err.message, 500, 'error network Products');
-        });
+        }
 }
 
-function get(req, res, next){
-    Controller.get(req.params.id)
-        .then((product) => {
-            response.success(req, res, product, 200);
-        })
-        .catch( (err) => {
+async function get(req, res, next){
+        try{
+            const resGetProd = await Controller.get(req.params.id);
+            response.success(req, res, resGetProd, 200);
+        }catch(err){
             response.error(req, res, err.message, 500, 'error network Products');
-        });
+        }
 }
 
-function searchByName(req, res, next){
-    Controller.getProductByName(req.query.s)
-        .then((resultSearch) => {
+async function searchByName(req, res, next){
+        try{
+            const resultSearch = await Controller.getProductByName(req.query.s);
             response.success(req, res, resultSearch, 200);
-        })
-        .catch( (err) => {
-            response.error(req, res, err.message, 500, 'error network SearchByName');
-        });
-    
+        }catch(err){
+            response.error(req, res, err.message, 500, 'error network Products');
+        }    
 }
-function searchByPrice(req, res, next){
-    Controller.getProductByPrice(req.query.min_price, req.query.max_price)
-        .then((resultSearch) => {
+async function searchByPrice(req, res, next){
+        try{
+            const resultSearch = await Controller.getProductByPrice(req.query.min_price, req.query.max_price);
             response.success(req, res, resultSearch, 200);
-        })
-        .catch( (err) => {
-            response.error(req, res, err.message, 500, 'error network SearchByName');
-        });    
+        }catch(err){
+            response.error(req, res, err.message, 500, 'error network Products');
+        }        
 }
-function searchByCategory(req, res, next){
-    Controller.getProductsByCategory(req.params.id)
-        .then((resultSearch) => {
+async function searchByCategory(req, res, next){
+        try{
+            const resultSearch = await Controller.getProductsByCategory(req.query.cat_id);
             response.success(req, res, resultSearch, 200);
-        })
-        .catch( (err) => {
-            response.error(req, res, err.message, 500, 'error network SearchByCategory');
-        });    
+        }catch(err){
+            response.error(req, res, err.message, 500, 'error network Products');
+        }
 }
 
 module.exports = router;

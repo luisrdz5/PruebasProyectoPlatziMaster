@@ -4,14 +4,13 @@ const TABLA = 'products';
 const TABLA_ALBUMS = 'albums';
 const TABLA_PHOTOS = 'product_photos';
 
-module.exports = function(injectedStore){
+function controller(injectedStore){
     let store = injectedStore;
     if (!store) {
         store = require('../../store/mysql');
     }
 
     async function insert(body) {
-
         const product = {
             description: body.description,
             product_title: body.title,
@@ -39,7 +38,6 @@ module.exports = function(injectedStore){
             throw err;
         }
         
-
         if(body.photo){
             const photo = {
                 id_product_photos: nanoid(),
@@ -55,11 +53,7 @@ module.exports = function(injectedStore){
                 throw err;
             }
         }
-        try{
             return await store.insert(TABLA, product);
-        }catch(err){
-            throw err;
-        }
     }
 
     async function update(body) {
@@ -118,7 +112,6 @@ module.exports = function(injectedStore){
         return await store.get(query);
     }
     
-
     return {
         insert,
         update,
@@ -129,3 +122,5 @@ module.exports = function(injectedStore){
         getProductsByCategory,
     }
 }
+
+module.exports = controller;
