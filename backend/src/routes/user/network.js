@@ -18,34 +18,31 @@ async function insert(req, res, next){
       }
 }
 
-function list(req, res, next){
-    Controller.list()
-        .then((userList) => {
+async function list(req, res, next){
+        try {
+            const userList = await Controller.list();
             response.success(req, res, userList, 200);
-        })
-        .catch( (err) => {
+        } catch( err){
             response.error(req, res, err.message, 500, 'error network user');
-        });
+        }
 }
 
-function get(req, res, next){
-    Controller.get(req.params.id)
-        .then((user) => {
-            response.success(req, res, user, 200);
-        })
-        .catch( (err) => {
+async function get(req, res, next){
+        try {
+            const userGetById = await Controller.get(req.params.id);
+            response.success(req, res, userGetById, 200);
+        } catch( err){
             response.error(req, res, err.message, 500, 'error network user');
-        });
+        }
 }
 
-function getAddr(req, res, next){
-    Controller.getAddr(req.params.id)
-        .then((user) => {
-            response.success(req, res, user, 200);
-        })
-        .catch( (err) => {
+async function getAddr(req, res, next){
+        try {
+            const userAddr = await Controller.getAddr(req.params.id);
+            response.success(req, res, userAddr, 200);
+        } catch( err){
             response.error(req, res, err.message, 500, 'error network user');
-        });
+        }
 }
 
 module.exports = router;

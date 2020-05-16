@@ -26,11 +26,7 @@ function controller(injectedStore){
             available: 1,
             password: await bcrypt.hash(body.password,5),
         }
-        try{
             return await store.insert(TABLA, user);
-        }catch(err){
-            throw err;
-        }
     }
 
     async function list(){
