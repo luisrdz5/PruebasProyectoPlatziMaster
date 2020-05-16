@@ -35,11 +35,41 @@
             width 100%
             text-align center
             border-bottom 1px solid #c2bebe
-            height 90%
+            height 95%
             margin 60px 0 0 0
         &__menu li 
             border-bottom 1px solid grey
             padding 20px
+        &__menu--container
+            width 100%
+            height 180px
+            display grid
+            grid-template-columns 40% 50%
+            grid-gap 10px
+            grid-auto-rows minmax(50px, auto)
+            align-items center
+            border-bottom 2px solid grey
+        &__menu--avatar
+            img 
+                width 65px
+                height 65px
+                border-radius 55%
+        &__menu--country
+            img 
+                width 50px
+                height 30px
+        &__menu--session
+            text-align left
+            input 
+                background-image linear-gradient($button-color , $button-color-secondary )
+                border none
+                height 35px
+                width 150px
+                border-radius 5px
+        &__menu--name
+            text-align left
+        &__menu--countryText
+            text-align left
         &__search
             margin 10px 0 10px 0
             height 30px
@@ -58,7 +88,6 @@
                 background $background-search
                 font-size $font-size-search
                 padding 0 8px 0 8px
-
 
 
 
