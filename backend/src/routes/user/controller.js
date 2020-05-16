@@ -35,15 +35,11 @@ function controller(injectedStore){
 
     async function get(id){
         const query = `SELECT * FROM ${TABLA} WHERE id_users='${id}'`;
-        //return await store.get(TABLA, id);
         return await store.get(query);
     }
 
     async function getAddr(id){
-        //SELECT * FROM addresess INNER JOIN user ON addresess.UserID = user.UserID
-        //SELECT * FROM addresess WHERE UserID='auPaaWgpllgm6OAIjh7-d'
         const query = `SELECT * FROM ${TABLA_USER_ADDRESS} WHERE id_users='${id}'`;
-        //return await store.get(TABLA, id);
         return await store.get(query);
     }
 

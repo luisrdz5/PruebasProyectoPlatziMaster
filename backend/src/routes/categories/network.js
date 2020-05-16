@@ -38,7 +38,7 @@ async function list(req, res, next){
 
 async function get(req, res, next){
         try{
-            const resGet = await Controller.update(req.params.id);
+            const resGet = await Controller.get(req.params.id);
             response.success(req, res, resGet, 200);
         }catch(err){
             response.error(req, res, err.message, 500, 'error network Categories');

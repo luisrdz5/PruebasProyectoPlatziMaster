@@ -76,8 +76,11 @@ function controller(injectedStore){
                 visible: body.photo.visible,
             }
             const queryUpdatePhoto = `UPDATE ${TABLA_PHOTOS} SET ? WHERE id_albums=(SELECT id_albums FROM ${TABLA_ALBUMS} WHERE albums.id_products='${body.id_products}')`;
-            const resultUpdatePhoto = store.update(queryUpdatePhoto, photo);
-            console.log(resultUpdatePhoto);
+            try{
+                await store.update(queryUpdatePhoto, photo);
+            }catch(err){
+                throw err;
+            }
         }
 
         const queryUpdateProductInfo = `UPDATE ${TABLA} SET ? WHERE id_products='${body.id_products}'`;
@@ -90,24 +93,20 @@ function controller(injectedStore){
 
     async function get(id){
         const query = `SELECT * FROM ${TABLA} WHERE id_products='${id}'`;
-        //return await store.get(TABLA, id);
         return await store.get(query);
     }
 
     async function getProductByName(searchWord){
-        //select * from products where product_title like '%marca%' or description like '%cafe%'
         const query = `SELECT * FROM ${TABLA} WHERE product_title like'%${searchWord}%' or description like '%${searchWord}%'`;
         return await store.get(query);
     }
 
     async function getProductByPrice(min_price, max_price){
-        //select * from products where cost >= 40000 and cost <= 75000
         const query = `SELECT * FROM ${TABLA} WHERE cost >= ${min_price} and cost <= ${max_price}`;
         return await store.get(query);
     }
 
     async function getProductsByCategory(cat_id){
-        //SELECT * FROM `products` WHERE id_categories='idUhZCmV_LpUxHV6Uqz39'
         const query = `SELECT * FROM ${TABLA} WHERE id_categories='${cat_id}'`;
         return await store.get(query);
     }
