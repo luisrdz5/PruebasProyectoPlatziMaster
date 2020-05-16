@@ -37,6 +37,54 @@
     border-bottom: 1px solid #808080;
     padding: 20px;
   }
+  .Header__search {
+    margin: 10px 0 10px 0;
+    height: 30px;
+    display: flex;
+  }
+  .Header__search img {
+    width: 10%;
+    height: 30px;
+    background: #eee;
+    border-radius: 5px 0 0 5px;
+  }
+  .Header__search input {
+    width: 85%;
+    height: 30px;
+    border-radius: 0 5px 5px 0;
+    outline: none;
+    border: none;
+    background: #eee;
+    font-size: 15px;
+    padding: 0 8px 0 8px;
+  }
+}
+@media only screen and (max-width: 321px) {
+  .Footer {
+    display: flex;
+    flex-direction: column;
+  }
+  .Footer__navContainer {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    padding: 20px 20px 0 0;
+  }
+  .Footer__navContainer a {
+    padding: 5px;
+  }
+  .Footer__socialContainer {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0 0 0;
+    align-items: center;
+    font-size: 1em;
+  }
+  .Footer__socialContainer img {
+    width: 15px;
+  }
 }
 * {
   text-decoration: none;
