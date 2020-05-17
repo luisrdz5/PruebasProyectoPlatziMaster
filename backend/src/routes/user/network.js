@@ -34,7 +34,7 @@ async function insert(req, res, next){
       }
 }
 /**
- * API Endpoint to list all Users from the data base. 
+ * API Endpoint to list all Users from the data base. //debug purpose
  * @method GET
  * @returns {<Object[]>} res - list of Users
  */
