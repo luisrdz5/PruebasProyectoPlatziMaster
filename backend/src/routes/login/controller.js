@@ -2,32 +2,33 @@ const bcrypt = require('bcryptjs');
 
 const TABLA = 'users';
 
-module.exports = function(injectedStore){
+function controller(injectedStore){
     let store = injectedStore;
     if (!store) {
         store = require('../../store/mysql');
     }
 
     async function login(email, password){
-        //select u.password from users as u where u.email='lilia@name.com'
         const query = `SELECT u.password FROM ${TABLA} as u WHERE u.email='${email}'`;
-        const data = await store.get(query);
-        return bcrypt.compare(password, data[0].password)
-            .then( areEqual => {
-                if(areEqual === true){
-                    //generar token
-                    return true;
-                }else{
-                    throw new Error('Datos inválidos');
-                }
-            })
-            .catch( err => {
-                throw err;
-            })
-
+        try {
+            const data = await store.get(query);
+            const areEqual = await bcrypt.compare(password, data[0].password);
+            if(areEqual){
+                //@TODO
+                //generar token
+                //retornar token a cliente.
+                return areEqual;
+            }else{
+                throw new Error('Datos Inválidos');
+            }
+        } catch (err) {
+            throw err;
+        }
     }
 
     return {
         login,
     }
 }
+
+module.exports = controller;

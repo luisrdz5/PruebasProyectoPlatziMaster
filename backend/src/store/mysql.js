@@ -4,7 +4,7 @@
 */
 const mysql = require('mysql');
 const config = require('../config/index');
-
+const fs = require('fs');
 /**
  * Fetch the environment variables to connect to a data base MySQL.
  */

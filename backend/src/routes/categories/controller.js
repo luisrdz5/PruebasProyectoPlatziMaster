@@ -1,8 +1,8 @@
 const { nanoid } = require('nanoid');
 
 const TABLA = 'categories';
-
-module.exports = function(injectedStore){
+ 
+function controller(injectedStore){
     let store = injectedStore;
     if (!store) {
         store = require('../../store/mysql');
@@ -16,8 +16,7 @@ module.exports = function(injectedStore){
             creation_date: new Date(),     
         }
         category.id_categories = nanoid();
-
-        return await store.insert(TABLA, category);
+            return await store.insert(TABLA, category);
     }
 
     async function update(body) {
@@ -45,5 +44,6 @@ module.exports = function(injectedStore){
         list,
         get,
     }
-
 }
+
+module.exports = controller;

@@ -7,7 +7,13 @@ const config = {
     password: process.env.DB_PASSWORD,
     host: process.env.DB_HOST,
     database: process.env.DB_NAME,
-    dbPort: process.env.DBPORT,
+    port: process.env.DB_PORT,
+    flags: process.env.DB_FLAGS
+  },
+  sslcert:{
+    SSL_CA: process.env.SSL_CA,
+    SSL_CERT: process.env.SSL_CERT,
+    SSL_KEY: process.env.SSL_KEY
   }
 };
 

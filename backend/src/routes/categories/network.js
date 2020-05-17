@@ -9,44 +9,40 @@ router.put('/', update);
 router.get('/', list);
 router.get('/:id', get);
 
-function insert(req, res, next){
-    Controller.insert(req.body)
-        .then((category) => {
-            response.success(req, res, category, 200);
-        })
-        .catch( (err) => {
-            response.error(req, res, err.message, 500, 'error network Categories');
-        });
+async function insert(req, res, next){
+    try{
+        const resInsert = await Controller.insert(req.body);
+        response.success(req, res, resInsert, 200);
+    }catch(err){
+        response.error(req, res, err.message, 500, 'error network Categories');
+    }
 }
 
-function update(req, res, next){
-    Controller.update(req.body)
-        .then((category) => {
-            response.success(req, res, category, 200);
-        })
-        .catch( (err) => {
+async function update(req, res, next){
+        try{
+            const resUpdate = await Controller.update(req.body);
+            response.success(req, res, resUpdate, 200);
+        }catch(err){
             response.error(req, res, err.message, 500, 'error network Categories');
-        });
+        }
 }
 
-function list(req, res, next){
-    Controller.list()
-        .then((categoriesList) => {
-            response.success(req, res, categoriesList, 200);
-        })
-        .catch( (err) => {
+async function list(req, res, next){
+        try{
+            const productList = await Controller.list();
+            response.success(req, res, productList, 200);
+        }catch(err){
             response.error(req, res, err.message, 500, 'error network Categories');
-        });
+        }
 }
 
-function get(req, res, next){
-    Controller.get(req.params.id)
-        .then((category) => {
-            response.success(req, res, category, 200);
-        })
-        .catch( (err) => {
+async function get(req, res, next){
+        try{
+            const resGet = await Controller.get(req.params.id);
+            response.success(req, res, resGet, 200);
+        }catch(err){
             response.error(req, res, err.message, 500, 'error network Categories');
-        });
+        }
 }
 
 module.exports = router;

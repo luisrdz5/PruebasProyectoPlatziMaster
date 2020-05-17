@@ -1,6 +1,8 @@
 # Created by https://www.gitignore.io/api/node,linux,macos,dotenv,windows
 # Edit at https://www.gitignore.io/?templates=node,linux,macos,dotenv,windows
 
+#SSL certs
+newcerts
 #jsdoc out
 out
 

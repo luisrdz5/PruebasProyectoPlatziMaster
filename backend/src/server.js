@@ -15,7 +15,6 @@ const swaggerDoc = require('../doc/swagger.json');
 const app = express();
 app.use(express.json());
 
-
 /**
  * API Routes 
  */
