@@ -8,6 +8,7 @@ const user = require('./routes/user/network');
 const login = require('./routes/login/network');
 const products = require('./routes/products/network');
 const categories =  require('./routes/categories/network');
+const addresses =  require('./routes/addresses/network');
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDoc = require('../doc/swagger.json');
@@ -22,6 +23,7 @@ app.use('/api/user', user);
 app.use('/api/login', login);
 app.use('/api/products', products);
 app.use('/api/categories', categories);
+app.use('/api/addresses', addresses);
 /**
  * Rout to show the API documentation
  */

@@ -4,7 +4,7 @@
 */
 const mysql = require('mysql');
 const config = require('../config/index');
-const fs = require('fs');
+//const fs = require('fs');
 /**
  * Fetch the environment variables to connect to a data base MySQL.
  */
@@ -52,6 +52,7 @@ function insert(table, data){
 /**
  * Update tuples with a customized query in the target table and id target.
  * @param {string} query - The customized query to UPDATE data
+ * @param {Object} data - The data to update
  * @returns {Promise} - result of the update operation.
  */
 function update(query, data){
