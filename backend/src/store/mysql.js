@@ -4,18 +4,15 @@
 */
 const mysql = require('mysql');
 const config = require('../config/index');
-
+const fs = require('fs');
 /**
  * Fetch the environment variables to connect to a data base MySQL.
  */
-//mysql -h db-mysql-nyc1-24985-do-user-7485588-0.a.db.ondigitalocean.com -u kod3rs -P 25060  -p kod3rsstore2020!
 const dbconf = {
     host: config.mysql.host,
     user: config.mysql.user,
     password: config.mysql.password,
     database: config.mysql.database,
-    port: config.mysql.port,
-    flags: config.mysql.flags
 };
 let connection;
 /**

@@ -9,6 +9,11 @@ const config = {
     database: process.env.DB_NAME,
     port: process.env.DB_PORT,
     flags: process.env.DB_FLAGS
+  },
+  sslcert:{
+    SSL_CA: process.env.SSL_CA,
+    SSL_CERT: process.env.SSL_CERT,
+    SSL_KEY: process.env.SSL_KEY
   }
 };
 
