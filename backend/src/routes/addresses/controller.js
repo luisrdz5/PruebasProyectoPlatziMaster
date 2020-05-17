@@ -3,8 +3,7 @@
  */
 const { nanoid } = require('nanoid');
 
-const TABLA_ADDR = 'users';
-const TABLA_USER = 'addresses';
+const TABLA_ADDR = 'directions';
  
 function controller(injectedStore){
     let store = injectedStore;
@@ -39,13 +38,13 @@ function controller(injectedStore){
     */
     async function update(body) {
         const address = {
-            id_cities_catalog: '1',
-            id_countries_catalog:'1',
-            id_states_catalog: '1',
+            id_cities_catalog: body.id_cities_catalog,
+            id_countries_catalog: body.id_countries_catalog,
+            id_states_catalog: body.id_states_catalog,
             street: body.street,
-            street_number: 'a',
-            id_postal_codes: 'q',
-            available: true,
+            street_number: body.street_number,
+            id_postal_codes: body.id_postal_codes,
+            available: body.available,
         }
         const query = `UPDATE ${TABLA_ADDR} SET ? WHERE id_directions='${body.id_directions}'`;
         return await store.update(query, address);
@@ -55,15 +54,15 @@ function controller(injectedStore){
      * @returns {Promise<object[]>} res - List of Addresses
      */
     async function list(){
-        return await store.list(TABLA);
+        return await store.list(TABLA_ADDR);
     }
      /**
-     * Logic to get one Category with a category ID target.
-     * @param {string} id - The Category ID target 
-     * @returns {Promise<object[]>} res - category
+     * Logic to get all Addresses with an user ID target.
+     * @param {string} id - The User ID of addresses target 
+     * @returns {Promise<object[]>} res - addresses list own to a user ID
      */
     async function get(id){
-        const query = `SELECT * FROM ${TABLA} WHERE id_categories='${id}'`;
+        const query = `SELECT * FROM ${TABLA_ADDR} WHERE id_users='${id}'`;
         return await store.get(query);
     }
 

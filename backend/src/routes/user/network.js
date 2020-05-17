@@ -13,7 +13,6 @@ const Controller = require('./index')
 router.post('/', insert);
 router.get('/', list);
 router.get('/:id', get);
-router.get('/addr/:id', getAddr);
 /**
  * API Endpoint to insert an User in the data base.
  * @method POST 
@@ -34,7 +33,7 @@ async function insert(req, res, next){
       }
 }
 /**
- * API Endpoint to list all Users from the data base. //debug purpose
+ * API Endpoint to list all Users from the data base. 
  * @method GET
  * @returns {<Object[]>} res - list of Users
  */
@@ -47,7 +46,7 @@ async function list(req, res, next){
         }
 }
 /**
- * API Endpoint to get an User with an user ID target.
+ * API Endpoint to get an User with an ID target.
  * @method GET 
  * @param {params} req - The User ID 
  * @returns {<Object[]>} res - User
@@ -56,20 +55,6 @@ async function get(req, res, next){
         try {
             const userGetById = await Controller.get(req.params.id);
             response.success(req, res, userGetById, 200);
-        } catch( err){
-            response.error(req, res, err.message, 500, 'error network user');
-        }
-}
-/**
- * API Endpoint to get all Addresses with an user ID target.
- * @method GET 
- * @param {params} req - The User ID
- * @returns {<Object[]>} res - List of User Addresses
- */
-async function getAddr(req, res, next){
-        try {
-            const userAddr = await Controller.getAddr(req.params.id);
-            response.success(req, res, userAddr, 200);
         } catch( err){
             response.error(req, res, err.message, 500, 'error network user');
         }

@@ -5,7 +5,7 @@ const { nanoid } = require('nanoid');
 const bcrypt = require('bcryptjs');
 
 const TABLA = 'users';
-const TABLA_USER_ADDRESS = 'addresess';
+const TABLA_USER_ADDRESS = 'addresses';
 
 function controller(injectedStore){
     let store = injectedStore;
