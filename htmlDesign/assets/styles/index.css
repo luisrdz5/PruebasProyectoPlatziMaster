@@ -166,12 +166,15 @@
   font-size: 15px;
   padding: 0 8px 0 8px;
 }
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 800px) {
+  .Header {
+    font-size: 13px;
+  }
   .Header__principal {
     padding: 15px 0 0 0;
     display: grid;
     grid-template-columns: 20% 65% 10%;
-    grid-gap: 5px;
+    grid-gap: 1px;
   }
   .Header__principal div:nth-of-type(1) {
     order: 2;
@@ -187,14 +190,24 @@
   }
   .Header__menu {
     display: flex;
-    justify-content: center;
-    margin: 0 30px 0 0;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
     border: none;
+    width: auto;
+    padding: 0;
+  }
+  .Header__menu--title {
+    display: none;
+  }
+  .Header__menu--exit {
+    display: none;
   }
   .Header__menu li {
     display: block;
-    border-bottom: 0;
+    border: 0;
     padding: 0;
+    margin: 0;
   }
   .Header__menu li:hover {
     background: #eee;
@@ -202,7 +215,19 @@
   }
   .Header__menu a {
     display: block;
-    padding: 20px;
+    padding: 10px;
+  }
+  .Header__menu--session {
+    padding: 0;
+    text-align: center;
+    width: 100px;
+  }
+  .Header__menu--session input {
+    background-image: linear-gradient(#d1d634, #dfe438);
+    border: none;
+    height: 35px;
+    width: 100%;
+    border-radius: 5px;
   }
   .Header__menu--container {
     display: none;

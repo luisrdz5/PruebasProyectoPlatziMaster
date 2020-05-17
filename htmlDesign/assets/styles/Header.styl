@@ -143,13 +143,14 @@
             background $background-search
             font-size $font-size-search
             padding 0 8px 0 8px
-@media only screen and (min-width 600px) 
+@media only screen and (min-width 800px) 
     .Header
+        font-size $font-size
         &__principal
             padding 15px 0 0 0 
             display grid
             grid-template-columns 20% 65% 10%
-            grid-gap 5px
+            grid-gap 1px
         &__principal div:nth-of-type(1) {
             order 2
         }
@@ -164,19 +165,37 @@
                 height 60px        
         &__menu  
             display flex
-            justify-content center
-            margin 0 30px 0 0
+            justify-content space-between
+            align-items center
+            margin 0
             border none
+            width auto
+            padding 0
+        &__menu--title
+            display none
+        &__menu--exit
+            display none
         &__menu li 
             display block
-            border-bottom 0
+            border 0
             padding 0
+            margin 0
         &__menu li:hover
             background $background-search
             border-bottom 0
         &__menu a 
             display block  
-            padding 20px
+            padding 10px
+        &__menu--session
+            padding 0 
+            text-align center
+            width 100px
+            input 
+                background-image linear-gradient($button-color , $button-color-secondary )
+                border none
+                height 35px
+                width 100%
+                border-radius 5px
         &__menu--container
             display none
             flex-direction row
