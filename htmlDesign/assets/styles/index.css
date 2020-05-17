@@ -42,8 +42,9 @@
   margin: 60px 0 0 0;
 }
 .Header__menu li {
-  border-bottom: 1px solid #808080;
+  border: 1px solid #000;
   padding: 20px;
+  margin: 0 30px 0 30px;
 }
 .Header__menu--container {
   width: 100%;
@@ -64,14 +65,42 @@
   width: 50px;
   height: 30px;
 }
+.Header__menu--title {
+  padding: 30px 0 30px 0;
+  display: flex;
+  justify-content: center;
+}
+.Header__menu--title--text {
+  background: #000;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  height: 35px;
+  width: 70%;
+  border-radius: 5px;
+}
 .Header__menu--session {
-  text-align: left;
+  padding: 30px 0 0 0;
+  text-align: center;
 }
 .Header__menu--session input {
   background-image: linear-gradient(#d1d634, #dfe438);
   border: none;
   height: 35px;
-  width: 150px;
+  width: 70%;
+  border-radius: 5px;
+}
+.Header__menu--exit {
+  padding: 30px 0 0 0;
+  text-align: center;
+}
+.Header__menu--exit input {
+  background-image: linear-gradient(#d1d634, #dfe438);
+  border: none;
+  height: 35px;
+  width: 70%;
   border-radius: 5px;
 }
 .Header__menu--name {
@@ -83,7 +112,8 @@
 .Header__menu--dark {
   display: flex;
   align-items: center;
-  text-align: left;
+  text-align: center;
+  justify-content: center;
 }
 .Header__menu--darkMode {
   position: relative;
