@@ -1,3 +1,6 @@
+/**Controller to manage store of products endpoint
+ * @module routes/products/controller
+ */
 const { nanoid } = require('nanoid');
 
 const TABLA = 'products';
@@ -9,7 +12,11 @@ function controller(injectedStore){
     if (!store) {
         store = require('../../store/mysql');
     }
-
+    /**
+     * Logic to insert a Product into the store.
+     * @param {Object} body - The Product information 
+     * @returns {Promise<object[]>} res - result of Product insertion
+     */
     async function insert(body) {
         const product = {
             description: body.description,
@@ -55,9 +62,16 @@ function controller(injectedStore){
         }
             return await store.insert(TABLA, product);
     }
-
+    /**
+     * Logic to update a product
+     * @method PUT 
+     * @param {Object} body - The Product information to be updated
+     * @returns {Object} res - result of Product update operation
+    */
     async function update(body) {
-        
+        /**
+         * @const {Object} - object to insert into product table
+         */
         const product = {
             description: body.description,
             product_title: body.title,
@@ -70,6 +84,9 @@ function controller(injectedStore){
         }
 
         if(body.photo){
+            /**
+             * @const {Object} - object to insert into photo table
+             */
             const photo = {
                 description: body.photo.description,
                 url_photo: body.photo.url,
@@ -86,26 +103,46 @@ function controller(injectedStore){
         const queryUpdateProductInfo = `UPDATE ${TABLA} SET ? WHERE id_products='${body.id_products}'`;
         return await store.update(queryUpdateProductInfo, product);
     }
-
+    /**
+     * Logic to list all Products of the store.
+     * @returns {Promise<object[]>} res - List of Products
+     */
     async function list(){
         return await store.list(TABLA);
     }
-
+     /**
+     * Logic to get one Product with a product ID target.
+     * @param {string} id - The User ID target 
+     * @returns {Promise<object[]>} res - result of one Product
+     */
     async function get(id){
         const query = `SELECT * FROM ${TABLA} WHERE id_products='${id}'`;
         return await store.get(query);
     }
-
+    /**
+    * Logic to get all products that match with the word to search.
+    * @param {string} searchWord - The word to search into the products
+    * @returns {Promise<object[]>} res - Product list that match with the word to search.
+    */
     async function getProductByName(searchWord){
         const query = `SELECT * FROM ${TABLA} WHERE product_title like'%${searchWord}%' or description like '%${searchWord}%'`;
         return await store.get(query);
     }
-
+    /**
+    * Logic to get all products that match with a price range.
+    * @param {string} min_price - The min price
+    * @param {string} max_price - The max price
+    * @returns {Promise<object[]>} res - Product list that match with the word to search.
+    */
     async function getProductByPrice(min_price, max_price){
         const query = `SELECT * FROM ${TABLA} WHERE cost >= ${min_price} and cost <= ${max_price}`;
         return await store.get(query);
     }
-
+    /**
+    * Logic to get all products that match with a category.
+    * @param {string} cat_id - The category id
+    * @returns {Promise<object[]>} res - Product list that match with the category id.
+    */
     async function getProductsByCategory(cat_id){
         const query = `SELECT * FROM ${TABLA} WHERE id_categories='${cat_id}'`;
         return await store.get(query);
