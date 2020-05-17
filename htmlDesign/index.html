@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./assets/styles/index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kod3rs Store</title>
 </head>
 <body>
@@ -28,7 +29,7 @@
               <input type="button" class="text" value="Iniciar sesion"> 
             </div>
             <div class="Header__menu--country">
-              <img src="./assets/images/flag.png" alt="flag" />  
+              <img src="./assets/images/flag.png" alt="flag" />
             </div>
             <div class="Header__menu--dark">
                <input name="dark" type="checkbox" class="Header__menu--darkMode" /> Dark mode
@@ -41,7 +42,7 @@
             <a href="./">Pedidos</a>
           </li>
           <li>
-            <a href="./">configuracion</a>
+            <a href="./">Configuracion</a>
           </li>
         </menu>
       </div>
@@ -62,15 +63,39 @@
       <div class="Main__Categories">
         <div class="Main__Category">
           <span class="Main__Category--title">Dama</span>
-          <a href="./"><img src="./assets/products/category women.jpg" /></a>
+          <div class="Main__Category--img">
+            <a href="./">
+              <picture>
+                <source srcset="./assets/products/category-women-big.png" media="(min-width: 1200px)"/>
+                <source srcset="./assets/products/category-women-medium.png" media="(min-width: 600px)"/>
+                <img src="./assets/products/category-women-small.png" alt="category image" />
+              </picture>
+            </a>
+          </div>
         </div>
         <div class="Main__Category">
           <span class="Main__Category--title">Caballero</span>
-          <a href="./"><img src="./assets/products/category men.jpg" /></a>
+          <div class="Main__Category--img">
+            <a href="./">
+              <picture>
+                <source srcset="./assets/products/category-men-big.png" media="(min-width: 1200px)"/>
+                <source srcset="./assets/products/category-men-medium.png" media="(min-width: 600px)"/>
+                <img src="./assets/products/category-men-small.png" alt="category image" />
+              </picture>
+            </a>
+          </div>
         </div>
         <div class="Main__Category">
           <span class="Main__Category--title">Accesorios</span>
-          <a href="./"><img src="./assets/products/category accesories.jpg" /></a>
+          <div class="Main__Category--img">
+            <a href="./">
+              <picture>
+                <source srcset="./assets/products/category-accesories-big.png" media="(min-width: 1200px)"/>
+                <source srcset="./assets/products/category-accesories-medium.png" media="(min-width: 600px)"/>
+                <img src="./assets/products/category-accesories-small.png" alt="category image" />
+              </picture>
+            </a>
+          </div>
         </div>
       </div>
   </section>
