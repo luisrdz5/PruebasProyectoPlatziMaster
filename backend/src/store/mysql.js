@@ -22,12 +22,14 @@ let connection;
  */
 function handleCon(){
     connection = mysql.createConnection(dbconf);
+    console.log('DB connecting');
     connection.connect( (err) => {
         if(err){
             console.error('[db err]', err);
-            setTimeout(handleCon, 2000);
+            return
+            //setTimeout(handleCon, 2000);
         }else{
-            console.log('DB connected');
+            console.log('DB connected as id ' + connection.threadId);
         }
     });
 }
@@ -71,11 +73,13 @@ function update(query, data){
  * @returns {Promise<object[]>} - array with query results.
  */
 function list(table){
+    console.log(`getting list in mysql.js ${connection}`);
     return new Promise( (resolve, reject) => {
         connection.query(`SELECT * FROM ${table}`, (err, data) => {
             if (err){
                 return reject(err);
             }
+            console.log(`enviando data: ${data} `);
             resolve(data);
         })
     })
