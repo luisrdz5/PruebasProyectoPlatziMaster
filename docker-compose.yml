@@ -20,7 +20,7 @@ services:
       - mysql
     environment:
       PMA_HOST: mysql
-      PMA_PORT: 25060
+      PMA_PORT: 3306
       PMA_ARBITRARY: 1
     restart: always
     depends_on:

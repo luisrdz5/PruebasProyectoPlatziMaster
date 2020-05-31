@@ -13,8 +13,7 @@ const dbconf = {
     user: config.mysql.user,
     password: config.mysql.password,
     database: config.mysql.database,
-    port: config.mysql.dbPort,
-    flags: 'SSL'
+    port: config.mysql.dbPort
 };
 let connection;
 /**
