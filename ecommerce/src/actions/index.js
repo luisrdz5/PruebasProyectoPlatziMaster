@@ -9,6 +9,10 @@ export const deleteFromCart = payload => ({
   type: 'DELETE_FROM_CART',
   payload,
 });
+export const logoutRequest = (payload) => ({
+  type: 'LOGOUT_REQUEST',
+  payload,
+});
 export const registerUser = (payload, redirectUrl) => {
   return (dispatch) => {
     axios.post('/auth/sign-up', payload)
@@ -63,5 +67,6 @@ export const logoutUser = (payload) => {
   };
 };
 export const loginUserGoogle = (redirectUrl) => {
-  window.location.href = `${domain}/auth/google-oauth`;
+  //window.location.href = `${domain}/auth/google-oauth`;
+  window.location.href = `${domain}/auth/google`;
 };

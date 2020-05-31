@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import '../styles/components/Header.styl';
+import ButtonSession from '../components/sessionButton';
 
 import avatarGrey from '../assets/images/avatar-grey.png';
 import flag from '../assets/images/flag.png';
@@ -9,9 +10,8 @@ import searchIcon from '../assets/images/search-icon.png';
 import logo from '../assets/images/logo.png';
 import shoppingCart from '../assets/images/logo_shopping_cart.png';
 
+
 const Header = (props) => {
-  
-  
   return (
   <div className="Header">
     <div className="Header__principal">
@@ -55,11 +55,7 @@ const Header = (props) => {
               Dark mode <input name="dark" type="checkbox" className="Header__menu--darkMode" /> 
             </div>
           </li>
-          <div className="Header__menu--session">
-            <Link to="/login">
-              <input type="button" className="text" value="Iniciar sesión" />
-            </Link>
-          </div>
+            <ButtonSession />
           <div className="Header__menu--exit">
             <input type="button" className="text" value="Salir" /> 
           </div>

@@ -9,6 +9,7 @@ import reducer from './reducers';
 
 const initialState = {
   cart: [],
+  user:[],
   products: [
     {
       "id": "1",
@@ -61,7 +62,7 @@ const store = createStore(reducer, initialState, composeEnhacers());
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <App isLogged={(initialState.user.email)}/>
   </Provider>,
   document.getElementById('app')
 );
