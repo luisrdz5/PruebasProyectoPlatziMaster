@@ -1,13 +1,12 @@
 import React from 'react';
-import { logoutUser } from '../actions';
+import { logoutRequest } from '../actions';
 import { connect } from 'react-redux';
 
 const ButtonSession = (props) => {
     const { user } = props;
     const hasUser = user ;
     const handleLogout = () => {
-      console.log('executing logout');
-      props.logoutUser({});
+      props.logoutRequest({});
       window.location.href = '/login';
     };
     const handleLogin = () => {
@@ -30,6 +29,6 @@ const mapStateToProps = state => {
     };
   };
   const mapDispatchToProps = {
-    logoutUser,
+    logoutRequest,
   };
 export default connect(mapStateToProps, mapDispatchToProps)(ButtonSession);

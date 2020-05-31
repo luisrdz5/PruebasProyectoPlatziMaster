@@ -9,11 +9,16 @@ export const deleteFromCart = payload => ({
   type: 'DELETE_FROM_CART',
   payload,
 });
+export const loginRequest = (payload) => ({
+  type: 'LOGIN_REQUEST',
+  payload,
+});
 export const logoutRequest = (payload) => ({
   type: 'LOGOUT_REQUEST',
   payload,
 });
 export const registerUser = (payload, redirectUrl) => {
+
   return (dispatch) => {
     axios.post('/auth/sign-up', payload)
       .then(({ data }) => {
@@ -33,22 +38,23 @@ export const registerUser = (payload, redirectUrl) => {
 
 
 export const loginUser = ({ email, password, rememberMe }, redirectUrl) => {
+
   return (dispatch) => {
+    
     axios({
-      url: '/auth/sign-in',
+      url: `${domain}/auth/sign-in`,
       method: 'post',
       auth: {
         username: email,
         password,
-      },
-      data: {
-        rememberMe,
-      },
+      }
     })
       .then(({ data }) => {
         document.cookie = `email=${data.email}`;
         document.cookie = `name=${data.name}`;
         document.cookie = `id=${data.id}`;
+      })
+      .then(() => {
         dispatch(loginRequest(data));
       })
       .then(() => {

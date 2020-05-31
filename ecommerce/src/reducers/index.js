@@ -17,7 +17,10 @@ const reducer = (state, action) => {
       case 'LOGIN_REQUEST':
         return {
           ...state,
-          user: action.payload,
+          user: {
+            email: action.payload.email,
+            id: '3e3edcyet5E$rsdf4swefde3'
+          }
         };
       case 'LOGOUT_REQUEST':
         return {

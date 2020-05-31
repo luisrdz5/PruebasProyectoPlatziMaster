@@ -2,6 +2,7 @@ import React,{ useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import googleIcon from '../assets/images/google.png';
+import { loginRequest } from '../actions';
 import { loginUser, loginUserGoogle } from '../actions';
 import '../styles/containers/Login.styl';
 
@@ -17,12 +18,15 @@ const Login = (props) => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.loginUser(form, '/');
+		props.loginRequest(form);
+		props.history.push('/'); 
   };
 
   const handleGoogle = (event) => {
     event.preventDefault();
-    props.loginUserGoogle('/');
+		props.loginRequest(form);
+		props.history.push('/'); 
+    //props.loginUserGoogle('/');
   };
 
 
@@ -49,7 +53,7 @@ const Login = (props) => {
             <button className='button'>Iniciar Sesión</button>
             <div className='login__container--remember-me'>
               <label>
-                <input type='checkbox' name='' id='cbox1' value='checkbox' />
+                <input type='checkbox' name='rememberMe' id='cbox1' value='checkbox' />
                 <span>Recuérdame</span>
               </label>
 
@@ -70,8 +74,8 @@ const Login = (props) => {
     </>
   );
 };
+
 const mapDispatchToProps = {
-  loginUser,
-  loginUserGoogle,
+  loginRequest,
 };
 export default connect(null, mapDispatchToProps)(Login);
