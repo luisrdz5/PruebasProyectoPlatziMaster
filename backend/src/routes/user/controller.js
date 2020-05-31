@@ -60,6 +60,20 @@ function controller(injectedStore){
         const query = `SELECT * FROM ${TABLA_USER_ADDRESS} WHERE id_users='${id}'`;
         return await store.get(query);
     }
+    /**
+     * Logic to get or create a new user .
+     * @param {object} user - The User ID target 
+     * @returns {Promise<object[]>} res - result of one User
+     */
+
+    async function getOrCreateUser({ user }){
+        const queriedUser = await this.get({id: user.id})
+        if(queriedUser){
+            return queriedUser;
+        }
+        await this.insert({ user });
+        return await this.get({id: user.id});
+    }
 
     return {
         insert,
